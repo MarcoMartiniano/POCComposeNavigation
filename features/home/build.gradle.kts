@@ -15,4 +15,6 @@ dependencies {
     implementation(Compose.composeMaterial)
     implementation(Compose.composeNavigation)
 
+    implementation(Koin.koinCompose)
+
 }

@@ -1,8 +1,10 @@
 package com.example.di.intent
 
 
+import com.example.home.ui.HomeNavigation
+import com.example.navigation.navigation.HomeNavigationImpl
 import org.koin.dsl.module
 
 val intentHomeModule = module {
-    //single<HomeNavigationn> { HomeNavigationnImp(get()) }
+    single<HomeNavigation> { HomeNavigationImpl(get()) }
 }

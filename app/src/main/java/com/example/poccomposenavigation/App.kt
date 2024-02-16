@@ -2,6 +2,7 @@ package com.example.poccomposenavigation
 
 import android.app.Application
 import com.example.di.intent.intentModule
+import com.example.di.presentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -18,7 +19,7 @@ class App : Application() {
 //                            dataRemoteModule,
 //                            dataLocalModule,
 //                            useCaseModule,
-//                            presentationModule
+                            presentationModule
                         )
             )
         }
