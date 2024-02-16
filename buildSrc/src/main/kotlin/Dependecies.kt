@@ -57,10 +57,10 @@ object Modules {
 //    const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
 //}
 //
-//object Retrofit {
-//    private const val gsonConvertGoogleVersion = "2.9.0"
-//    const val gsonConvertGoogle = "com.google.code.gson:gson:$gsonConvertGoogleVersion"
-//}
+object Retrofit {
+    private const val gsonConvertGoogleVersion = "2.9.0"
+    const val gsonConvertGoogle = "com.google.code.gson:gson:$gsonConvertGoogleVersion"
+}
 //
 //object Security {
 //    private const val cryptoVersion = "1.1.0-alpha03"

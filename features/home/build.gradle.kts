@@ -12,8 +12,7 @@ apply("${rootProject.projectDir}/android-common.gradle")
 //}
 
 dependencies {
-//
-//    implementation(Compose.composeMaterial)
-//    implementation(Compose.composeNavigation)
+    implementation(Compose.composeMaterial)
+    implementation(Compose.composeNavigation)
 
 }

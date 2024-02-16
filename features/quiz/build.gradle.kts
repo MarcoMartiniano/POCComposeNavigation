@@ -9,4 +9,5 @@ apply("${rootProject.projectDir}/android-common.gradle")
 
 
 dependencies {
+    implementation(Compose.composeMaterial)
 }
