@@ -43,8 +43,6 @@ object Modules {
     const val navigationModule = ":core:navigation"
     const val domainModule = ":domain"
     const val dataModule = ":data"
-    const val dataLocalModule = ":data_local"
-    const val dataRemoteModule = ":data_remote"
     const val commons = ":core:commons"
     const val feature_encyclopedia = ":features:encyclopedia"
     const val feature_favorites = ":features:favorites"
