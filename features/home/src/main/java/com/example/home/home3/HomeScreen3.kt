@@ -1,4 +1,4 @@
-package com.example.home.home2
+package com.example.home.home3
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,26 +13,27 @@ import androidx.navigation.NavController
 
 
 @Composable
-fun HomeScreen2(
-    onClickNavigateToEncyclopediaModule: () -> Unit,
-    onClickNavigateToHome3: () -> Unit,
+fun HomeScreen3(
+    onClickNavigateToFavoritesModule: () -> Unit,
+    onClickNavigateToHome: () -> Unit,
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Home2", fontSize = 36.sp)
+        Text(text = "Home3", fontSize = 36.sp)
         Button(onClick = {
-            onClickNavigateToEncyclopediaModule.invoke()
+            onClickNavigateToFavoritesModule.invoke()
         }) {
-            Text(text = "Navigate to Encyclopedia Module")
+            Text(text = "Navigate to Favorities Module")
         }
         Button(onClick = {
-            onClickNavigateToHome3.invoke()
+            onClickNavigateToHome.invoke()
         }) {
-            Text(text = "Navigate to Home3")
+            Text(text = "Navigate to Home")
         }
+
     }
 
 }

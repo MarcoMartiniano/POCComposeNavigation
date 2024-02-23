@@ -16,7 +16,6 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = koinViewModel(),
-    navController: NavController,
     onClickNavigateToOtherModule: () -> Unit,
     onClickNavigateToHome2WithBar: () -> Unit,
     onClickNavigateToHome2NoBar: () -> Unit
@@ -29,19 +28,16 @@ fun HomeScreen(
     ) {
         Text(text = "Home", fontSize = 36.sp)
         Button(onClick = {
-            //action(HomeViewAction.Navigate.QuizScreen(navController = navController))
             onClickNavigateToOtherModule.invoke()
         }) {
             Text(text = "Navigate to Other Module")
         }
         Button(onClick = {
-           // action(HomeViewAction.Navigate.Home2Screen(navController = navController))
             onClickNavigateToHome2WithBar.invoke()
         }) {
             Text(text = "Navigate to Home2 with QuizBottomNavigationBar")
         }
         Button(onClick = {
-           // action(HomeViewAction.Navigate.Home2Screen(navController = navController))
             onClickNavigateToHome2NoBar.invoke()
         }) {
             Text(text = "Navigate to Home2 without QuizBottomNavigationBar")

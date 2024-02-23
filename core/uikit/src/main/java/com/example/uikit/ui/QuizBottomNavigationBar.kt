@@ -74,7 +74,7 @@ fun QuizBottomNavigationBar(
 object Test{
     fun checkScreenTab(route: String): String =
         when (route) {
-            "home_screen", "home_screen2" -> "home_screen"
+            "home_screen", "home_screen2", "home_screen3" -> "home_screen"
             "quiz_screen" -> "quiz_screen"
             "favorites_screen" -> "favorites_screen"
             "encyclopedia_screen" -> "encyclopedia_screen"

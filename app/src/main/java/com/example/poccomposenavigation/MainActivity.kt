@@ -4,11 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import com.example.poccomposenavigation.ui.theme.POCComposeNavigationTheme
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.navigation.graph.AppNavigation
-import com.example.navigation.graph.AppNavigation2
+import com.example.poccomposenavigation.ui.theme.POCComposeNavigationTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -17,10 +16,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             POCComposeNavigationTheme {
-                val navHostController: NavHostController = rememberNavController()
-                viewModel.initNavigation(navHostController = navHostController)
-                //AppNavigation(navController = navHostController)
-                AppNavigation2(navController = navHostController)
+                val mainNavHostController: NavHostController = rememberNavController()
+                val tabNavHostController: NavHostController = rememberNavController()
+                viewModel.initNavigation(navHostController = mainNavHostController)
+                AppNavigation(
+                    mainNavHostController = mainNavHostController,
+                    tabNavHostController = tabNavHostController
+                )
             }
         }
     }

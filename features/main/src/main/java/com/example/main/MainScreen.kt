@@ -11,7 +11,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.example.uikit.models.BottomNavItem
 import com.example.uikit.theme.Black
 import com.example.uikit.theme.RoundedCornerShape16top
@@ -20,8 +19,10 @@ import com.example.poccomposenavigation.uikit.R
 
 
 @Composable
-fun MainScreen(navController2: NavHostController) {
-    val navController = rememberNavController()
+fun MainScreen(
+    mainNavHostController: NavHostController,
+    tabNavHostController: NavHostController,
+) {
     Scaffold(
         modifier = Modifier.background(
             color = Black,
@@ -51,10 +52,10 @@ fun MainScreen(navController2: NavHostController) {
                         icon = ImageVector.vectorResource(id = R.drawable.ic_favorite)
                     ),
                 ),
-                navController = navController,
+                navController = tabNavHostController,
                 onItemClick = {
-                    navController.navigate(it.route) {
-                        popUpTo(navController.graph.findStartDestination().id) {
+                    tabNavHostController.navigate(it.route) {
+                        popUpTo(tabNavHostController.graph.findStartDestination().id) {
                             saveState = true
                         }
                         launchSingleTop = true
@@ -70,8 +71,10 @@ fun MainScreen(navController2: NavHostController) {
                     .fillMaxSize()
                     .padding(paddingValues = innerPadding)
             ) {
-                MainNavigation2(mainNavHostController = navController,navController2)
-               // MainNavigation(navController = navController)
+                MainNavigation(
+                    mainNavHostController = mainNavHostController,
+                    tabNavHostController = tabNavHostController
+                )
             }
         }
     )
