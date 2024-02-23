@@ -39,7 +39,9 @@ fun QuizBottomNavigationBar(
             backgroundColor = LightGold
         ) {
             items.forEach { item ->
-                val selected = item.route == backStackEntry.value?.destination?.route
+                val test = Test.checkScreenTab(backStackEntry.value?.destination?.route.toString())
+
+                val selected = item.route == test
                 BottomNavigationItem(
                     modifier = Modifier.testTag(testTag ?: "BooksBottomNavigationBarItem"),
                     selected = selected,
@@ -67,4 +69,15 @@ fun QuizBottomNavigationBar(
             }
         }
     }
+
+}
+object Test{
+    fun checkScreenTab(route: String): String =
+        when (route) {
+            "home_screen", "home_screen2" -> "home_screen"
+            "quiz_screen" -> "quiz_screen"
+            "favorites_screen" -> "favorites_screen"
+            "encyclopedia_screen" -> "encyclopedia_screen"
+            else -> ""
+        }
 }

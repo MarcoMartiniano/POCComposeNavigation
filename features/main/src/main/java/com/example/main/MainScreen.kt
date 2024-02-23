@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.uikit.models.BottomNavItem
 import com.example.uikit.theme.Black
@@ -19,7 +20,7 @@ import com.example.poccomposenavigation.uikit.R
 
 
 @Composable
-fun MainScreen() {
+fun MainScreen(navController2: NavHostController) {
     val navController = rememberNavController()
     Scaffold(
         modifier = Modifier.background(
@@ -31,22 +32,22 @@ fun MainScreen() {
                 items = listOf(
                     BottomNavItem(
                         name = "Home",
-                        route = MainNavigation.HomeScreen,
+                        route = MainNavigation.HomeScreen.HomeScreen,
                         icon = ImageVector.vectorResource(id = R.drawable.ic_home)
                     ),
                     BottomNavItem(
                         name = "Quiz",
-                        route = MainNavigation.QuizScreen,
+                        route = MainNavigation.QuizScreen.QuizScreen,
                         icon = ImageVector.vectorResource(id = R.drawable.ic_quiz)
                     ),
                     BottomNavItem(
                         name = "Enciclopedia",
-                        route = MainNavigation.EncyclopediaScreen,
+                        route = MainNavigation.EncyclopediaScreen.EncyclopediaScreen,
                         icon = ImageVector.vectorResource(id = R.drawable.ic_encyclopedia)
                     ),
                     BottomNavItem(
                         name = "Favoritos",
-                        route = MainNavigation.FavoritesScreen,
+                        route = MainNavigation.FavoritesScreen.FavoritesScreen,
                         icon = ImageVector.vectorResource(id = R.drawable.ic_favorite)
                     ),
                 ),
@@ -59,6 +60,7 @@ fun MainScreen() {
                         launchSingleTop = true
                         restoreState = true
                     }
+
                 }
             )
         },
@@ -68,7 +70,8 @@ fun MainScreen() {
                     .fillMaxSize()
                     .padding(paddingValues = innerPadding)
             ) {
-                MainNavigation(navController = navController)
+                MainNavigation2(mainNavHostController = navController,navController2)
+               // MainNavigation(navController = navController)
             }
         }
     )

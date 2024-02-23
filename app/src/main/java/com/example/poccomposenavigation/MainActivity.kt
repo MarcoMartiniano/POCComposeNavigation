@@ -8,6 +8,7 @@ import com.example.poccomposenavigation.ui.theme.POCComposeNavigationTheme
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.navigation.graph.AppNavigation
+import com.example.navigation.graph.AppNavigation2
 
 class MainActivity : ComponentActivity() {
 
@@ -18,7 +19,8 @@ class MainActivity : ComponentActivity() {
             POCComposeNavigationTheme {
                 val navHostController: NavHostController = rememberNavController()
                 viewModel.initNavigation(navHostController = navHostController)
-                AppNavigation(navController = navHostController)
+                //AppNavigation(navController = navHostController)
+                AppNavigation2(navController = navHostController)
             }
         }
     }

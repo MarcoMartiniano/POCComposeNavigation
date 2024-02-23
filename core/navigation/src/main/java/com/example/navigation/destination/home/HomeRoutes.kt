@@ -8,4 +8,8 @@ object HomeRoutes {
         root = Destination.Home,
         route = "home"
     )
+    object Home2 : LeafDestination(
+        root = Destination.Home,
+        route = "home2"
+    )
 }

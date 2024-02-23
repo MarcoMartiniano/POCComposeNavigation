@@ -1,4 +1,4 @@
-package com.example.home.ui
+package com.example.home.home.ui
 
 
 import androidx.lifecycle.ViewModel
@@ -14,6 +14,9 @@ class HomeViewModel : ViewModel(), KoinComponent {
 
             is HomeViewAction.Navigate.QuizScreen -> {
                 navigation.navigateToQuiz(viewAction.navController)
+            }
+            is HomeViewAction.Navigate.Home2Screen -> {
+                navigation.navigateToHome2(viewAction.navController)
             }
         }
     }
