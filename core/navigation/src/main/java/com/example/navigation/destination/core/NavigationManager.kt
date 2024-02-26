@@ -12,9 +12,9 @@ import kotlinx.coroutines.launch
 
 @Suppress("unused")
 class NavigationManager(
-    private val applicationScope: CoroutineScope
+    private val applicationScope: CoroutineScope,
 ) {
-    lateinit var navController: NavController
+    //lateinit var navController: NavController
     private val _commands: Channel<NavigationCommand> = Channel(Channel.BUFFERED)
     val commands = _commands.receiveAsFlow()
 
@@ -34,7 +34,7 @@ class NavigationManager(
         route: String,
         builder: NavOptionsBuilder.() -> Unit = {
             launchSingleTop = true
-        }
+        },
     ) {
         navigate(route, navOptions(builder))
     }
@@ -50,7 +50,8 @@ class NavigationManager(
             _commands.send(NavigationCommand.PopStackBack)
         }
     }
-    fun switchTabs(route: String,  navController: NavController) {
+
+    fun switchTabs(route: String, navController: NavController) {
         navController.navigate(route) {
             // Pop up to the start destination of the graph to
             // avoid building up a large stack of destinations
@@ -71,7 +72,7 @@ class NavigationManager(
 
 sealed class NavigationType {
 
-    object NavigateTo : NavigationType()
+    data object NavigateTo : NavigationType()
 }
 
 sealed class NavigationCommand {

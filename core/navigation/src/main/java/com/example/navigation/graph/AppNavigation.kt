@@ -1,13 +1,17 @@
 package com.example.navigation.graph
 
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.commons.utils.NavigationRoutes
 import com.example.home.home2.HomeScreen2
 import com.example.home.home3.HomeScreen3
-import com.example.main.MainNavigation
 import com.example.main.MainScreen
 
 
@@ -21,8 +25,19 @@ fun AppNavigation(
 
         composable(route = "tabs") {
             MainScreen(
-                mainNavHostController = mainNavHostController,
-                tabNavHostController = tabNavHostController
+                tabNavHostController = tabNavHostController,
+                content = {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(paddingValues = it)
+                    ) {
+                        MainNavigation(
+                            mainNavHostController = mainNavHostController,
+                            tabNavHostController = tabNavHostController
+                        )
+                    }
+                }
             )
         }
 
@@ -30,7 +45,7 @@ fun AppNavigation(
             HomeScreen2(
                 onClickNavigateToEncyclopediaModule = {
                     mainNavHostController.popBackStack()
-                    tabNavHostController.navigate(MainNavigation.EncyclopediaScreen.EncyclopediaScreen)
+                    tabNavHostController.navigate(NavigationRoutes.EncyclopediaScreen.EncyclopediaScreen)
                 },
                 onClickNavigateToHome3 = {
                     mainNavHostController.navigate("out_home_screen3")
@@ -44,7 +59,7 @@ fun AppNavigation(
                         "out_home_screen2",
                         true
                     )
-                    tabNavHostController.navigate(MainNavigation.FavoritesScreen.FavoritesScreen)
+                    tabNavHostController.navigate(NavigationRoutes.FavoritesScreen.FavoritesScreen)
                 },
                 onClickNavigateToHome = {
                     mainNavHostController.popBackStack(

@@ -17,5 +17,5 @@ dependencies {
     implementation(project(Modules.feature_main))
     implementation(project(Modules.feature_quiz))
     implementation(project(Modules.feature_home))
-
+    implementation(project(Modules.commons))
 }

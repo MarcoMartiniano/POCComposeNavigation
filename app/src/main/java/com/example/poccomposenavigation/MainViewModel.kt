@@ -9,14 +9,14 @@ import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class MainViewModel: ViewModel(), KoinComponent {
+class MainViewModel : ViewModel(), KoinComponent {
 
     private val navigationManager: NavigationManager by inject()
 
     fun initNavigation(
-        navHostController: NavHostController
+        navHostController: NavHostController,
     ) {
-        navigationManager.navController = navHostController
+        // navigationManager.navController = navHostController
         viewModelScope.launch {
             navigationManager.commands.collect { command ->
                 when (command) {

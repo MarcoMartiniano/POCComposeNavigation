@@ -16,6 +16,7 @@ dependencyResolutionManagement {
 rootProject.name = "POCComposeNavigation"
 include(":app")
 include(":core")
+include(":core:commons")
 include(":core:di")
 include(":core:navigation")
 include(":core:uikit")

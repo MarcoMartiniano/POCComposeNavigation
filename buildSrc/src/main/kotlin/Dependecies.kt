@@ -27,15 +27,11 @@ object Compose {
 object Koin {
     private const val koinVersion = "3.5.3"
     const val koinInsert = "io.insert-koin:koin-core:$koinVersion"
-//    const val koinAndroid = "io.insert-koin:koin-android:$koinVersion"
+
+    //    const val koinAndroid = "io.insert-koin:koin-android:$koinVersion"
     const val koinCompose = "io.insert-koin:koin-androidx-compose:$koinVersion"
 }
 
-
-//object Material {
-//    private const val materialVersion = "1.8.0"
-//    const val material = "com.google.android.material:material:$materialVersion"
-//}
 
 object Modules {
     const val diModule = ":core:di"
@@ -51,6 +47,7 @@ object Modules {
     const val feature_home = ":features:home"
 
 }
+
 //
 //object Coroutines {
 //    private const val coroutinesVersion = "1.7.3"
