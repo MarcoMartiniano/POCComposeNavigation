@@ -18,7 +18,10 @@ class MainActivity : ComponentActivity() {
             POCComposeNavigationTheme {
                 val mainNavHostController: NavHostController = rememberNavController()
                 val tabNavHostController: NavHostController = rememberNavController()
-                //viewModel.initNavigation(navHostController = mainNavHostController)
+                viewModel.initNavigation(
+                    mainNavHostController = mainNavHostController,
+                    tabNavHostController = tabNavHostController
+                )
                 AppNavigation(
                     mainNavHostController = mainNavHostController,
                     tabNavHostController = tabNavHostController

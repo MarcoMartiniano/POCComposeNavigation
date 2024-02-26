@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -13,7 +12,6 @@ import com.example.main.MainScreen
 
 internal fun NavGraphBuilder.addMainNavGraph(
     tabNavHostController: NavHostController,
-    mainNavHostController: NavController,
 ) {
     composable(route = NavigationRoutes.Routes.MainRoute) {
         MainScreen(
@@ -25,7 +23,6 @@ internal fun NavGraphBuilder.addMainNavGraph(
                         .padding(paddingValues = it)
                 ) {
                     MainNavigation(
-                        mainNavHostController = mainNavHostController,
                         tabNavHostController = tabNavHostController
                     )
                 }

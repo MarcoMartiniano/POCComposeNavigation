@@ -10,23 +10,35 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
-@Suppress("unused")
 class NavigationManager(
     private val applicationScope: CoroutineScope,
 ) {
-    //lateinit var navController: NavController
     private val _commands: Channel<NavigationCommand> = Channel(Channel.BUFFERED)
     val commands = _commands.receiveAsFlow()
 
-    private fun navigate(route: String, navOptions: NavOptions? = null) {
+    private fun navigate(
+        route: String,
+        navOptions: NavOptions? = null,
+        isBottomNavigation: Boolean,
+    ) {
         applicationScope.launch {
-            _commands.send(
-                NavigationCommand.Navigate(
-                    destination = route,
-                    type = NavigationType.NavigateTo,
-                    navOptions = navOptions
+            if (isBottomNavigation) {
+                _commands.send(
+                    NavigationCommand.BottomBarNavigate(
+                        destination = route,
+                        type = NavigationType.NavigateTo,
+                        navOptions = navOptions
+                    )
                 )
-            )
+            } else {
+                _commands.send(
+                    NavigationCommand.Navigate(
+                        destination = route,
+                        type = NavigationType.NavigateTo,
+                        navOptions = navOptions
+                    )
+                )
+            }
         }
     }
 
@@ -35,8 +47,9 @@ class NavigationManager(
         builder: NavOptionsBuilder.() -> Unit = {
             launchSingleTop = true
         },
+        isBottomNavigation: Boolean,
     ) {
-        navigate(route, navOptions(builder))
+        navigate(route, navOptions(builder), isBottomNavigation)
     }
 
     fun navigateUp() {
@@ -86,6 +99,12 @@ sealed class NavigationCommand {
     data object NavigateUp : NavigationCommand()
 
     data object PopStackBack : NavigationCommand()
+
+    data class BottomBarNavigate(
+        val destination: String,
+        val navOptions: NavOptions? = null,
+        val type: NavigationType,
+    ) : NavigationCommand()
 }
 
 

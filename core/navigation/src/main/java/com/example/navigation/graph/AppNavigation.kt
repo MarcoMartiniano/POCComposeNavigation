@@ -18,7 +18,6 @@ fun AppNavigation(
     ) {
         addMainNavGraph(
             tabNavHostController = tabNavHostController,
-            mainNavHostController = mainNavHostController
         )
         addHomeOutTabNavGraph(
             tabNavHostController = tabNavHostController,

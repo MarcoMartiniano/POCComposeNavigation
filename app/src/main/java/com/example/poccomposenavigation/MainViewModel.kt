@@ -14,15 +14,20 @@ class MainViewModel : ViewModel(), KoinComponent {
     private val navigationManager: NavigationManager by inject()
 
     fun initNavigation(
-        navHostController: NavHostController,
+        mainNavHostController: NavHostController,
+        tabNavHostController: NavHostController,
     ) {
-        // navigationManager.navController = navHostController
         viewModelScope.launch {
             navigationManager.commands.collect { command ->
                 when (command) {
-                    NavigationCommand.NavigateUp -> navHostController.navigateUp()
-                    NavigationCommand.PopStackBack -> navHostController.popBackStack()
-                    is NavigationCommand.Navigate -> navHostController.navigate(
+                    NavigationCommand.NavigateUp -> mainNavHostController.navigateUp()
+                    NavigationCommand.PopStackBack -> mainNavHostController.popBackStack()
+                    is NavigationCommand.Navigate -> mainNavHostController.navigate(
+                        route = command.destination,
+                        navOptions = command.navOptions
+                    )
+
+                    is NavigationCommand.BottomBarNavigate -> tabNavHostController.navigate(
                         route = command.destination,
                         navOptions = command.navOptions
                     )

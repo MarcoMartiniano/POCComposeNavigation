@@ -9,16 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import org.koin.androidx.compose.koinViewModel
-
 
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = koinViewModel(),
-    onClickNavigateToOtherModule: () -> Unit,
-    onClickNavigateToHome2WithBar: () -> Unit,
-    onClickNavigateToHome2NoBar: () -> Unit
 ) {
     val action: (HomeViewAction) -> Unit = { viewModel.dispatchViewAction(it) }
     Column(
@@ -28,20 +23,19 @@ fun HomeScreen(
     ) {
         Text(text = "Home", fontSize = 36.sp)
         Button(onClick = {
-            onClickNavigateToOtherModule.invoke()
+            action(HomeViewAction.Navigate.QuizModuleScreen)
         }) {
             Text(text = "Navigate to Other Module")
         }
         Button(onClick = {
-            onClickNavigateToHome2WithBar.invoke()
+            action(HomeViewAction.Navigate.Home2ScreenWithNavigationBar)
         }) {
             Text(text = "Navigate to Home2 with QuizBottomNavigationBar")
         }
         Button(onClick = {
-            onClickNavigateToHome2NoBar.invoke()
+            action(HomeViewAction.Navigate.Home2ScreenWithNoNavigationBar)
         }) {
             Text(text = "Navigate to Home2 without QuizBottomNavigationBar")
         }
     }
-
 }

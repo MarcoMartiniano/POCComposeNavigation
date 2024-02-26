@@ -1,6 +1,5 @@
 package com.example.navigation.graph
 
-import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -12,25 +11,13 @@ import com.example.home.home3.HomeScreen3
 
 internal fun NavGraphBuilder.addHomeNavGraph(
     tabNavHostController: NavHostController,
-    mainNavHostController: NavController,
 ) {
     navigation(
         startDestination = NavigationRoutes.HomeScreen.HomeScreen,
         route = NavigationRoutes.Routes.HomeRoute
     ) {
         composable(NavigationRoutes.HomeScreen.HomeScreen) {
-            HomeScreen(
-                onClickNavigateToOtherModule = {
-                    tabNavHostController.navigate(NavigationRoutes.Routes.QuizRoute)
-                },
-                onClickNavigateToHome2WithBar = {
-                    tabNavHostController.navigate(NavigationRoutes.HomeScreen.HomeScreen2)
-                },
-                onClickNavigateToHome2NoBar = {
-                    mainNavHostController.navigate(NavigationRoutes.OutHomeScreen.OutHomeScreen2)
-                }
-            )
-
+            HomeScreen()
         }
         composable(NavigationRoutes.HomeScreen.HomeScreen2) {
             HomeScreen2(
