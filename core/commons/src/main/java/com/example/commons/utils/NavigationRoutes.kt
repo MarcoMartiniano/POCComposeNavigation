@@ -2,6 +2,7 @@ package com.example.commons.utils
 
 object NavigationRoutes {
     object Routes {
+        const val MainRoute = "main"
         const val HomeRoute = "home"
         const val QuizRoute = "quiz"
         const val FavoritesRoute = "favorites"
@@ -24,5 +25,10 @@ object NavigationRoutes {
 
     object EncyclopediaScreen {
         const val EncyclopediaScreen = "encyclopedia_screen"
+    }
+
+    object OutHomeScreen {
+        const val OutHomeScreen2 = "out_home_screen2"
+        const val OutHomeScreen3 = "out_home_screen3"
     }
 }
