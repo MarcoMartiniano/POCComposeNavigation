@@ -8,10 +8,7 @@ class HomeNavigationImpl(
     private val navigationManager: NavigationManager,
 ) : HomeNavigation {
     override fun navigateToQuizModuleScreen() {
-        navigationManager.navigate(
-            route = NavigationRoutes.Routes.QuizRoute,
-            isBottomNavigation = true
-        )
+        navigationManager.switchTabs(NavigationRoutes.Routes.QuizRoute)
     }
 
     override fun navigateToHome2ScreenWithNavigationBar() {

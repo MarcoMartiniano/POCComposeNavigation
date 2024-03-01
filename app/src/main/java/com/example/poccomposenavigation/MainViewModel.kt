@@ -2,6 +2,7 @@ package com.example.poccomposenavigation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.example.navigation.destination.core.NavigationCommand
 import com.example.navigation.destination.core.NavigationManager
@@ -31,6 +32,14 @@ class MainViewModel : ViewModel(), KoinComponent {
                         route = command.destination,
                         navOptions = command.navOptions
                     )
+
+                    is NavigationCommand.SwitchTabs -> tabNavHostController.navigate(command.route) {
+                        popUpTo(tabNavHostController.graph.findStartDestination().id) {
+                            saveState = true
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
                 }
             }
         }

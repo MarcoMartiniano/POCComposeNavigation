@@ -61,6 +61,12 @@ class NavigationManager(
             _commands.send(NavigationCommand.PopStackBack)
         }
     }
+
+    fun switchTabs(route: String) {
+        applicationScope.launch {
+            _commands.send(NavigationCommand.SwitchTabs(route = route))
+        }
+    }
 }
 
 sealed class NavigationType {
@@ -84,6 +90,10 @@ sealed class NavigationCommand {
         val destination: String,
         val navOptions: NavOptions? = null,
         val type: NavigationType,
+    ) : NavigationCommand()
+
+    data class SwitchTabs(
+        val route: String,
     ) : NavigationCommand()
 }
 
